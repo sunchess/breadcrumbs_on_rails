@@ -86,9 +86,29 @@ module BreadcrumbsOnRails
         end.join(@options[:separator] || " &raquo; ")
       end
 
+      #Old method
+      #def render_element(element)
+      #  content = @context.link_to_unless_current(compute_name(element), compute_path(element), element.options)
+      #  if @options[:tag]
+      #    @context.content_tag(@options[:tag], content)
+      #  else
+      #    content
+      #  end
+      #end
+
+      #:no_html => true will generate a breadcrumb without links
+      #:current_as_link => true will generate a breadcrumb with current link
       def render_element(element)
-        content = @context.link_to_unless_current(compute_name(element), compute_path(element), element.options)
-        if @options[:tag]
+        if @options[:no_html] == true
+          content = compute_name(element)
+        else
+          if @options[:current_as_link] == true
+            content = @context.link_to(compute_name(element), compute_path(element))
+          else
+            content = @context.link_to_unless_current(compute_name(element), compute_path(element), element.options)
+          end
+        end
+        if @options[:tag] and ( !@options[:no_html] or @options[:no_html] == false )
           @context.content_tag(@options[:tag], content)
         else
           content
