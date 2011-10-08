@@ -1,3 +1,10 @@
+= It's fork the original Breadcrumbs On Rails
+
+    <%= render_breadcrumbs(:no_html => true, :current_as_link => true) %>
+
+    :no_html is option that shows items without <a> tag for title tag.
+    :current_as_link does last item with <a> tag.
+
 = Breadcrumbs On Rails
 
 *BreadcrumbsOnRails* is a simple Ruby on Rails plugin for creating and managing a breadcrumb navigation for a Rails project.
