@@ -7,7 +7,6 @@
 #++
 
 module BreadcrumbsOnRails
-  extend ActiveSupport::Concern
   class Railtie < Rails::Railtie
     initializer "breadcrumbs_on_rails.initialize" do
     end

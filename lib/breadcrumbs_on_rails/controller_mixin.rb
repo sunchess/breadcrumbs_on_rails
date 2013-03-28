@@ -13,7 +13,6 @@ module BreadcrumbsOnRails
 
     included do
       extend          ClassMethods
-      include         InstanceMethods
       helper          HelperMethods
       helper_method   :add_breadcrumb, :breadcrumbs
     end
@@ -65,16 +64,14 @@ module BreadcrumbsOnRails
 
     end
 
-    module InstanceMethods
-      protected
+    protected
 
-      def add_breadcrumb(name, path, options = {})
-        self.breadcrumbs << Breadcrumbs::Element.new(name, path, options)
-      end
+    def add_breadcrumb(name, path, options = {})
+      self.breadcrumbs << Breadcrumbs::Element.new(name, path, options)
+    end
 
-      def breadcrumbs
-        @breadcrumbs ||= []
-      end
+    def breadcrumbs
+      @breadcrumbs ||= []
     end
 
     module HelperMethods
